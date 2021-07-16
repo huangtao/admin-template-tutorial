@@ -1,0 +1,10 @@
+.Python
+build/
+bin/
+.vs/
+obj/
+dist/
+node_modules/
+lib/
+lib64/
+.vscode/
