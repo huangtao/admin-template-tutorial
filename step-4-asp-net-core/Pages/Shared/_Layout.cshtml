@@ -2,78 +2,60 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <title>@ViewData["Title"] - BootstrapAdmin</title>
-    <!-- Bootstrap的CSS文件 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- 我的CSS -->
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/css/master.css" rel="stylesheet">
 </head>
 <body>
-    <!-- 顶部导航 -->
-    <header class="navbar navbar-expand-lg navbar-light bg-light sticky-top flex-md-nowrap p-0 shadow">
-        <div class="container-fluid">
-            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">
-                <img src="~/img/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-middle">
-                管理后台
-            </a>
-            <!-- <div class="coolapse navbar-collapse">
-              <a class="nav-link active" href="#">主页</a>
-              <a class="nav-link" href="#">Link</a>
-              <a class="nav-link disabled" href="#">Disable</a>
-            </div> -->
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item text-nowrap">
-                    <a class="nav-link" href="#">注销</a>
+    <div class="wrapper">
+        <nav id="sidebar" class="col-xs-12 active">
+            <div class="sidebar-header">
+                <img src="~/img/bootstraper-logo.png" alt="bootraper logo">
+            </div>
+            <!-- 右侧导航 -->
+            <ul class="list-unstyled components text-secondary">
+                <li>
+                    <a asp-page="/Index"><i class="fas fa-home"></i>监控</a>
+                </li>
+                <li>
+                    <a asp-page="/Privacy"><i class="fas fa-user"></i>账号</a>
+                </li>
+                <li>
+                    <a asp-page="/Privacy"><i class="fas fa-dice-four"></i>房卡房间</a>
                 </li>
             </ul>
-        </div>
-    </header>
-
-    <div class="container-fluid">
-        <div class="row">
-            <!-- 右侧导航 -->
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-                <div class="position-sticky pt-2">
-                    <ul class="nav nav-pills flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                <span data-feather="home"></span>
-                                仪表盘
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="user"></span>
-                                账号
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="codepen"></span>
-                                房卡房间
-                            </a>
+        </nav>
+        <div id="body" class="active">
+            <!-- 视图上方导航 -->
+            <nav class="navbar navbar-expand-lg navbar-white bg-white">
+                <button type="button" id="sidebarCollapse" class="btn btn-light"><i class="fas fa-bars"></i><span></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <div class="nav-dropdown">
+                                <a href="" class="nav-item nav-link dropdown-toggle text-secondary" data-toggle="dropdown"><i class="fas fa-user"></i><span>我</span><i style="font-size:.8em;" class="fas fa-caret-down"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right nav-link-menu">
+                                    <ul class="nav-list">
+                                        <li><a href="" class="dropdown-item"><i class="fas fa-address-card"></i> 注销</a></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </div>
             </nav>
-
-            <main role="main" class="col-md-9" ms-sm-auto col-lg-10 px-md-4">
+            <!-- 视图内容 -->
+            <div class="content">
                 @RenderBody()
-            </main>
+            </div>
         </div>
     </div>
 
-    @*<footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - BootstrapAdmin - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>*@
-
     <!-- JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/eb911b3ddf.js" crossorigin="anonymous"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
